@@ -10,10 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815162822) do
+ActiveRecord::Schema.define(version: 20160815165701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bottle_lots", force: :cascade do |t|
+    t.string   "size"
+    t.integer  "year"
+    t.string   "color"
+    t.string   "appelation"
+    t.integer  "quantity"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bottle_lots_on_user_id", using: :btree
+  end
+
+  create_table "caves", force: :cascade do |t|
+    t.text     "description"
+    t.string   "address"
+    t.integer  "price_per_month"
+    t.string   "type"
+    t.integer  "temperature"
+    t.string   "open_hour"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_caves_on_user_id", using: :btree
+  end
+
+  create_table "reservartions", force: :cascade do |t|
+    t.date     "check_in"
+    t.date     "check_out"
+    t.text     "review"
+    t.integer  "grade"
+    t.integer  "cave_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cave_id"], name: "index_reservartions_on_cave_id", using: :btree
+  end
+
+  create_table "reservation_bottles", force: :cascade do |t|
+    t.integer  "reservation_id"
+    t.integer  "bottle_lot_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["bottle_lot_id"], name: "index_reservation_bottles_on_bottle_lot_id", using: :btree
+    t.index ["reservation_id"], name: "index_reservation_bottles_on_reservation_id", using: :btree
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.date     "check_in"
+    t.date     "check_out"
+    t.text     "review"
+    t.integer  "grade"
+    t.integer  "cave_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cave_id"], name: "index_reservations_on_cave_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,4 +91,10 @@ ActiveRecord::Schema.define(version: 20160815162822) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bottle_lots", "users"
+  add_foreign_key "caves", "users"
+  add_foreign_key "reservartions", "caves", column: "cave_id"
+  add_foreign_key "reservation_bottles", "bottle_lots"
+  add_foreign_key "reservation_bottles", "reservations"
+  add_foreign_key "reservations", "caves", column: "cave_id"
 end
