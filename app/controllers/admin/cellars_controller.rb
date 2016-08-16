@@ -5,17 +5,10 @@ class Admin::CellarsController < ApplicationController
   end
 
   def new
-  end
-
-  def create
+    @cellar = Cellar.new
   end
 
   def edit
   end
 
-  def update
-  end
-
-  def destroy
-  end
 end
