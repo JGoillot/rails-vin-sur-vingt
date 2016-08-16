@@ -6,13 +6,17 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :cellars do
+  resources :cellars, only: [:index, :show] do
     resources :reservations, only: [:create, :new, :destroy]
     resources :messages, only: [:create, :new]
     resources :conversations, only: [:index, :show]
   end
-  resources :bottles, only: [:new, :index, :create, :show]
-
+  namespace :admin do
+    resources :bottle_lots, only: [:new, :index, :create, :show]
+    resources :cellars, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :reservations, only: [:index]
+    resources :conversations, only: [:index, :show]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

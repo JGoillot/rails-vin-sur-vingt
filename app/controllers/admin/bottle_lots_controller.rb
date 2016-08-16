@@ -1,4 +1,4 @@
-class BottleLotsController < ApplicationController
+class Admin::BottleLotsController < ApplicationController
   def index
   end
 
