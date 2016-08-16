@@ -27,27 +27,27 @@ ActiveRecord::Schema.define(version: 20160816082758) do
     t.index ["user_id"], name: "index_bottle_lots_on_user_id", using: :btree
   end
 
-  create_table "caves", force: :cascade do |t|
+  create_table "cellars", force: :cascade do |t|
     t.text     "description"
     t.string   "address"
     t.integer  "space_available"
     t.integer  "price_per_month"
-    t.string   "type"
+    t.string   "kind"
     t.integer  "temperature"
     t.string   "open_hour"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["user_id"], name: "index_caves_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_cellars_on_user_id", using: :btree
   end
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "cave_id"
+    t.integer  "cellar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cave_id"], name: "index_messages_on_cave_id", using: :btree
+    t.index ["cellar_id"], name: "index_messages_on_cellar_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20160816082758) do
     t.date     "check_out"
     t.text     "review"
     t.integer  "grade"
-    t.integer  "cave_id"
+    t.integer  "cellar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cave_id"], name: "index_reservations_on_cave_id", using: :btree
+    t.index ["cellar_id"], name: "index_reservations_on_cellar_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,10 +92,10 @@ ActiveRecord::Schema.define(version: 20160816082758) do
   end
 
   add_foreign_key "bottle_lots", "users"
-  add_foreign_key "caves", "users"
-  add_foreign_key "messages", "caves", column: "cave_id"
+  add_foreign_key "cellars", "users"
+  add_foreign_key "messages", "cellars"
   add_foreign_key "messages", "users"
   add_foreign_key "reservation_bottles", "bottle_lots"
   add_foreign_key "reservation_bottles", "reservations"
-  add_foreign_key "reservations", "caves", column: "cave_id"
+  add_foreign_key "reservations", "cellars"
 end

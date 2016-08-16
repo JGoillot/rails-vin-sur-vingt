@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :cave
+  belongs_to :cellar
 
   validates :content, presence: true
 end

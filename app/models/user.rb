@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :reservations
   has_many :bottle_lots
+  has_many :cellars
 
   validates :firstname, presence: true
   validates :lastname, presence: true

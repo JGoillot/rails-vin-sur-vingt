@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  belongs_to :cave
+  belongs_to :cellar
   has_many :reservation_bottles
   has_many :bottle_lots, through: :reservation_bottles
 
