@@ -1,0 +1,15 @@
+
+  <%= simple_form_for @cellar do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :space_available %>
+    <%= f.input :price_per_month %>
+    <%= f.input :kind %>
+    <%= f.input :temperature %>
+    <%= f.input :open_hour %>
+
+    <%= f.button :submit, class: "btn btn-primary" %>
+
+    <% end %>
