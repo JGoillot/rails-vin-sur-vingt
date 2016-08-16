@@ -1,1 +1,8 @@
 <p>Show all my stored bottles</p>
+
+
+
+<%= @bottle_lots.each do |bottle_lot| %>
+<%= bottle_lot.size %>
+<%= bottle_lot.year %>
+<% end %>

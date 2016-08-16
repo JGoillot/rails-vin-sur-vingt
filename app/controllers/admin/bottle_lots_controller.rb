@@ -1,5 +1,6 @@
 class Admin::BottleLotsController < ApplicationController
   def index
+    @bottle_lots = BottleLot.all
   end
 
   def new
