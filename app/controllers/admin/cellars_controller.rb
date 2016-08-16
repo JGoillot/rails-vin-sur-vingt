@@ -18,5 +18,4 @@ class Admin::CellarsController < ApplicationController
 
   def destroy
   end
-
 end

@@ -1,2 +1,10 @@
 <h1>Pages#home</h1>
 <p>LANDING PAGE</p>
+
+
+<p>Make your search!</p>
+
+<%= simple_form_for :search, url: cellars_path, method: :get do |f| %>
+  <%= f.input :space_available %>
+  <%= f.button :submit %>
+<% end %>
