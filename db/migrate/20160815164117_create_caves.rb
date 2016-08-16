@@ -3,6 +3,7 @@ class CreateCaves < ActiveRecord::Migration[5.0]
     create_table :caves do |t|
       t.text :description
       t.string :address
+      t.integer :space_available
       t.integer :price_per_month
       t.string :type
       t.integer :temperature

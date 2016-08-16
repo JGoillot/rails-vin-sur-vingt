@@ -1,6 +1,15 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :messages
+  has_many :reservations
+  has_many :bottle_lots
+
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :birthdate, presence: true
+  # validates :birthdate, timeliness: { on_or_before: lambda { Date.current }, type: :date }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end

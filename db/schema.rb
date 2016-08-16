@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815165701) do
+ActiveRecord::Schema.define(version: 20160816082758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160815165701) do
   create_table "caves", force: :cascade do |t|
     t.text     "description"
     t.string   "address"
+    t.integer  "space_available"
     t.integer  "price_per_month"
     t.string   "type"
     t.integer  "temperature"
@@ -40,15 +41,14 @@ ActiveRecord::Schema.define(version: 20160815165701) do
     t.index ["user_id"], name: "index_caves_on_user_id", using: :btree
   end
 
-  create_table "reservartions", force: :cascade do |t|
-    t.date     "check_in"
-    t.date     "check_out"
-    t.text     "review"
-    t.integer  "grade"
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
     t.integer  "cave_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cave_id"], name: "index_reservartions_on_cave_id", using: :btree
+    t.index ["cave_id"], name: "index_messages_on_cave_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "reservation_bottles", force: :cascade do |t|
@@ -93,7 +93,8 @@ ActiveRecord::Schema.define(version: 20160815165701) do
 
   add_foreign_key "bottle_lots", "users"
   add_foreign_key "caves", "users"
-  add_foreign_key "reservartions", "caves", column: "cave_id"
+  add_foreign_key "messages", "caves", column: "cave_id"
+  add_foreign_key "messages", "users"
   add_foreign_key "reservation_bottles", "bottle_lots"
   add_foreign_key "reservation_bottles", "reservations"
   add_foreign_key "reservations", "caves", column: "cave_id"
