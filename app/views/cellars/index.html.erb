@@ -1,11 +1,14 @@
 <% @cellars.each do |c| %>
+<%= link_to cellar_path(c.id) do %>
   <div>
-    <p>
-      <%= c.user[:firstname] %>
-      <%= c.user[:lastname] %>
-    </p>
-    <p>
-      <%= c.address %>
-    </p>
+      <p>
+        <%= c.user[:firstname] %>
+        <%= c.user[:lastname] %>
+      </p>
+      <p>
+        <%= c.address %>
+      </p>
+      <hr>
   </div>
+<% end %>
 <% end %>
