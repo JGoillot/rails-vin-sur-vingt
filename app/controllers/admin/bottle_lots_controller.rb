@@ -13,7 +13,7 @@ class Admin::BottleLotsController < ApplicationController
     @bottle_lot.user = current_user
 
     if @bottle_lot.save
-      redirect_to admin_bottle_lots_path(@bottle_lot)
+      redirect_to user_dashboard_path
     else
       render :new
     end
