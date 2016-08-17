@@ -2,11 +2,11 @@ class CellarsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    # if params with search
-      # @cellars = Cellar.where with critaeria
-    # else
-      # @cellars = Cellar.all
-    # end
+    if search_params
+      @cellars = Cellar.where(search_params)
+    else
+      @cellars = Cellar.all
+    end
   end
 
   def show
@@ -30,9 +30,8 @@ class CellarsController < ApplicationController
     params.require(:cellar).permit(:name, :description, :address, :space_available, :price_per_month, :kind, :temperature, :open_hour)
   end
 
-  private
-
-  def cellars_params
+  def search_params
+    params[:search].permit(:space_available)
   end
 
 end

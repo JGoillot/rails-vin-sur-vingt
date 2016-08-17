@@ -72,4 +72,7 @@
       </ul>
     </div>
   </div>
+  <% if user_signed_in? && current_user.facebook_picture_url %>
+  <%= image_tag current_user.facebook_picture_url, height: 50, width: 50 %>
+<% end %>
 </div>
