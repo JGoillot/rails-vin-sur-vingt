@@ -14,3 +14,23 @@
     opacity: 0.9;
   }
 }
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    border-top: 1px solid #dce0e0;
+}
+
+.existing-account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.log-in {
+  padding: 6px 12px;
+  border: 1px solid #ff5a5f;
+  color: #ff5a5f;
+}
