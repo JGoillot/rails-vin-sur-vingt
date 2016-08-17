@@ -12,7 +12,7 @@
 
 
 <div class="user-infos">
-  <%= link_to user_profile(@cellar.user) do %>
+  <%= link_to user_profile_path(@cellar.user) do %>
   <%= @cellar.user.first_name %> <%= @cellar.user.last_name %>
   <% end %>
 </div>
