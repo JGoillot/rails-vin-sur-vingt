@@ -9,6 +9,14 @@
 <h5><%= @cellar.description %></h5>
 
 <p><%= @cellar.address %></p>
+
+
+<div class="user-infos">
+  <%= link_to user_path(@cellar.user) do %>
+  <%= @cellar.user.firstname %> <%= @cellar.user.lastname %>
+  <% end %>
+</div>
+
 <p>
 <h2><i class="fa fa-braille" aria-hidden="true"></i></h2>
 <strong><%= @cellar.space_available %></strong> Emplacement disponible
