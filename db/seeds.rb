@@ -40,7 +40,6 @@ kind = %w( fridge rock underground )
       kind: kind.sample
     )
   end
-
 end
 
 puts '= Seed Create User Done'

@@ -1,8 +1,11 @@
+
+
 <h1>MY PROFILE</h1>
-<p>
-<%= @user.firstname %>
-<%= @user.lastname %>
-</p>
+<div class="user-infos">
+  <%= link_to user_path(@user) do %>
+  <%= @user.firstname %> <%= @user.lastname %>
+  <% end %>
+</div>
 
 <h1>MY BOTTLES</h1>
 <p>
