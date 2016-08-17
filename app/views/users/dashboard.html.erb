@@ -7,13 +7,24 @@
   <% end %>
 </div>
 
-<h1>MY BOTTLES</h1>
-<p>
-<%= @user.first_name %>
-<%= @user.last_name %>
-</p>
+<h1>MY BOTTLES <%= link_to "Add a new Bottle Lot", new_admin_bottle_lot_path, class: "btn btn-primary" %></h1>
 
-<h1>MY CELLAR</h1>
+
+<div class="container">
+  <div class="row">
+  <% @user.bottle_lots.each do |bottle| %>
+    <div class="col-xs-12 col-sm-4">
+      <strong><%= bottle.quantity %></strong> <%= bottle.dimension %><br>
+      <h4><%= bottle.appelation %></h4>
+      <h5><%= bottle.year %></h5>
+      <h5><%= bottle.color %></h5>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<h1>MY CELLAR <%= link_to "Add a new Cellar", new_admin_cellar_path, class: "btn btn-primary" %></h1>
 <p>
 <% @cellars.each do |cellar| %>
 <%= link_to cellar_path(cellar) do %>
