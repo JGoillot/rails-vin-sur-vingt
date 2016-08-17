@@ -30,4 +30,9 @@ class CellarsController < ApplicationController
     params.require(:cellar).permit(:name, :description, :address, :space_available, :price_per_month, :kind, :temperature, :open_hour)
   end
 
+  private
+
+  def cellars_params
+  end
+
 end
