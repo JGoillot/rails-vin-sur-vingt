@@ -2,3 +2,21 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.header {
+  background-image: image-url('background.jpeg');
+  background-size: cover;
+}
+
+.header-content {
+  padding: 100px;
+  h1 {
+    color: white;
+  }
+    p {
+      color: white;
+      padding-bottom: 100px;
+    }
+}
+
+
