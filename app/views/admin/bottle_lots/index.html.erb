@@ -1,4 +1,4 @@
-<%= @user.firstname + " " + @user.lastname + "'s bottles" %>
+<%= @user.first_name + " " + @user.last_name + "'s bottles" %>
 
 <hr>
 
@@ -7,7 +7,7 @@
 <% @bottle_lots.each do |b| %>
   Lot <%= i %>:
   <%= b.quantity %> /
-  <%= b.size %> /
+  <%= b.dimension %> /
   <%= b.year %> /
   <%= b.color %> /
   <%= b.appelation %>

@@ -22,6 +22,6 @@ class Admin::BottleLotsController < ApplicationController
   private
 
   def bottle_lot_params
-    params.require(:bottle_lot).permit(:size, :year, :color, :appelation, :quantity)
+    params.require(:bottle_lot).permit(:dimension, :year, :color, :appelation, :quantity)
   end
 end

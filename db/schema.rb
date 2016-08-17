@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160817083445) do
   enable_extension "plpgsql"
 
   create_table "bottle_lots", force: :cascade do |t|
-    t.string   "size"
+    t.string   "dimension"
     t.integer  "year"
     t.string   "color"
     t.string   "appelation"
