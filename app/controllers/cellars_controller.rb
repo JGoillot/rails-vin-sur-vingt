@@ -2,7 +2,7 @@ class CellarsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if search_params.blank?
+    if search_params[:space_available].blank?
       @cellars = Cellar.all
     else
       @cellars = Cellar.where(search_params)
@@ -31,7 +31,7 @@ class CellarsController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(:space_available)[:space_available]
+    params.require(:search).permit(:space_available)
   end
 
 end
