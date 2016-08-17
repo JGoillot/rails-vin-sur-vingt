@@ -2,7 +2,7 @@
 
 <h1>MY PROFILE</h1>
 <div class="user-infos">
-  <%= link_to user_profile(@user) do %>
+  <%= link_to user_profile_path(@user) do %>
   <%= @user.first_name %> <%= @user.last_name %>
   <% end %>
 </div>

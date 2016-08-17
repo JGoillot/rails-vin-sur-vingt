@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'users#dashboard', as: "user_dashboard"
 
-  get 'profile' => 'users#show', as: "user_profile"
+  get 'profile/:id' => 'users#show', as: "user_profile"
 
   get 'conversations/index'
 

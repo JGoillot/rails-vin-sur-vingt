@@ -26,8 +26,8 @@ kind = %w( fridge rock underground )
   user = User.create(
     email: Faker::Internet.email,
     password: "123soleil",
-    firstname: Faker::Name.first_name,
-    lastname: Faker::Name.last_name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     birthdate: Date.today
   )
   if [true, false].sample
