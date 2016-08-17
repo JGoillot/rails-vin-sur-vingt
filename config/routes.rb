@@ -4,9 +4,8 @@ Rails.application.routes.draw do
 
   get 'profile/:id' => 'users#show', as: "user_profile"
 
-  get 'conversations/index'
+  # get 'conversations/index'
 
-  get 'conversations/show'
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :cellars, only: [:index, :show, :create, :update, :destroy] do
     resources :reservations, only: [:create, :new, :destroy]
-    resources :messages, only: [:create, :new]
+    resources :messages, only: [:create, :new, :index]
     resources :conversations, only: [:index, :show]
   end
   namespace :admin do
