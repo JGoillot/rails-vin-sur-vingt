@@ -31,7 +31,7 @@ class CellarsController < ApplicationController
   end
 
   def search_params
-    params[:search].permit(:space_available)
+    params.require(:search).permit(:space_available)
   end
 
 end
