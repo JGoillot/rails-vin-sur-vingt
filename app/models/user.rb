@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :bottle_lots
   has_many :cellars, dependent: :destroy
 
-  validates :firstname, presence: true
-  validates :lastname, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   # validates :birthdate, presence: true
   # validates :birthdate, timeliness: { on_or_before: lambda { Date.current }, type: :date }
 
@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
-    user_params.merge! auth.info.slice(:email, :firstname, :lastname)
+    user_params.merge! auth.info.slice(:email, :first_name, :last_name)
     user_params[:facebook_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
