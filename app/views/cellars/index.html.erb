@@ -1,1 +1,11 @@
-<p>GROSSES CAVES</p>
+<% @cellars.each do |c| %>
+  <div>
+    <p>
+      <%= c.user[:firstname] %>
+      <%= c.user[:lastname] %>
+    </p>
+    <p>
+      <%= c.address %>
+    </p>
+  </div>
+<% end %>
