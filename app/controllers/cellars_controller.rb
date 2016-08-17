@@ -12,4 +12,9 @@ class CellarsController < ApplicationController
   def show
   end
 
+  private
+
+  def cellars_params
+  end
+
 end
