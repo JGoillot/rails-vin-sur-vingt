@@ -1,3 +1,36 @@
 <p>display a cellar </p>
 
-<%= @cellar.inspect %>
+<div class="cellar-view">
+<%= image_tag("http://placehold.it/1000x450") %>
+</div>
+
+
+<h2><%= @cellar.user.firstname %> 's Cellar </h2>
+<h5><%= @cellar.description %></h5>
+
+<p><%= @cellar.address %></p>
+<p>
+<h2><i class="fa fa-braille" aria-hidden="true"></i></h2>
+<strong><%= @cellar.space_available %></strong> Emplacement disponible
+</p>
+
+<p>
+<h2><i class="fa fa-eur" aria-hidden="true"></i></h2>
+<strong><%= @cellar.price_per_month %>€</strong> Abonnement Mensuel
+</p>
+
+<p>
+<h2><i class="fa fa-building-o" aria-hidden="true"></i></i></h2>
+<strong><%= @cellar.kind %></strong>
+</p>
+
+<p>
+<h2><i class="fa fa-fire" aria-hidden="true"></i></h2>
+<strong><%= @cellar.temperature %>°C</strong>
+</p>
+
+<p>
+<h2><i class="fa fa-hourglass-end" aria-hidden="true"></i></h2>
+<strong><%= @cellar.open_hour %></strong>
+</p>
+
