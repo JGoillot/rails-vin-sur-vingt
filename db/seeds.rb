@@ -40,15 +40,6 @@ kind = %w( fridge rock underground )
       kind: kind.sample
     )
   end
-
-  BottleLot.create(
-    size: "bordelaise",
-    year: 1995
-    color: "red"
-    appelation: "Chateau La Motte"
-    quantity: 5
-    )
-
 end
 
 puts '= Seed Create User Done'

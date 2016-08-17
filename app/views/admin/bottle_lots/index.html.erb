@@ -1,8 +1,21 @@
-<p>Show all my stored bottles</p>
+<%= @user.firstname + " " + @user.lastname + "'s bottles" %>
 
+<hr>
 
+<% i = 1 %>
 
-<%= @bottle_lots.each do |bottle_lot| %>
-<%= bottle_lot.size %>
-<%= bottle_lot.year %>
+<% @bottle_lots.each do |b| %>
+  Lot <%= i %>:
+  <%= b.quantity %> /
+  <%= b.size %> /
+  <%= b.year %> /
+  <%= b.color %> /
+  <%= b.appelation %>
+  <% i += 1  %>
+  <hr>
 <% end %>
+
+
+
+
+
