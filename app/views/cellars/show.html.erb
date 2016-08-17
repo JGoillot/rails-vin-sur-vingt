@@ -1,8 +1,14 @@
 <p>display a cellar </p>
 
-<div class="cellar-view">
-<%= image_tag("http://placehold.it/1000x450") %>
-</div>
+<% if @cellar.photos.empty? %>
+  <%= image_tag "wine_cellar.jpg", width: 1000, height: 450, crop: :fill %>
+<% else %>
+  <% @cellar.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 1000, height: 450, crop: :fill %>
+  <% end %>
+<% end %>
+
+
 
 
 <h2><%= @cellar.user.first_name %> 's Cellar </h2>

@@ -37,7 +37,8 @@ kind = %w( fridge rock underground )
       address: Faker::Address.city,
       space_available: Faker::Number.number(2),
       price_per_month: Faker::Number.decimal(2),
-      kind: kind.sample
+      kind: kind.sample,
+
     )
   end
 end

@@ -27,7 +27,7 @@ class CellarsController < ApplicationController
   private
 
   def cellar_params
-    params.require(:cellar).permit(:name, :description, :address, :space_available, :price_per_month, :kind, :temperature, :open_hour)
+    params.require(:cellar).permit(:name, :description, :address, :space_available, :price_per_month, :kind, :temperature, :open_hour, photos: [])
   end
 
   def search_params
