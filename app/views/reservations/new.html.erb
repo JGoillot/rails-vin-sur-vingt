@@ -1,0 +1,11 @@
+<%= simple_form_for :reservations do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :check_in %>
+  <%= f.input :check_out %>
+  <%= f.select :quantity, @user.bottle_lots %>
+  byebug
+  <%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
