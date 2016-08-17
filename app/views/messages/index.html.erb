@@ -1,7 +1,14 @@
 PageINDEX
 
-<div>
+
   <% @message.each do |f| %>
-    <%= f.content %>
-  <%end%>
-</div>
+    <p>
+      <%= link_to  cellar_path(f.cellar) do %>
+        <%= f.cellar.user.first_name %> <%= f.cellar.user.last_name %> <br>
+      <% end %>
+      <%= f.content %>
+    </p>
+  <% end %>
+
+
+
