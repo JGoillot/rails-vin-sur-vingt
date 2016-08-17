@@ -1,8 +1,9 @@
 class ReservationsController < ApplicationController
-  def create
+  def new
+    @user = current_user
   end
 
-  def new
+  def create
   end
 
   def destroy
