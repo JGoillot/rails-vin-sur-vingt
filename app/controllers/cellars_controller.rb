@@ -30,4 +30,8 @@ class CellarsController < ApplicationController
     params.require(:cellar).permit(:name, :description, :address, :space_available, :price_per_month, :kind, :temperature, :open_hour)
   end
 
+  def search_params
+    params.require(:search).permit(:space_available)
+  end
+
 end
