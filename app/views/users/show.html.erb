@@ -4,8 +4,8 @@
     <%= image_tag "http://placehold.it/150x150" %>
   </div>
   <div class="text-user">
-    <h1>Hello, my name is <%= @user.firstname %></h1>
-      <h5><strong><%= @user.firstname %> <%= @user.lastname %></strong> · Member since <strong><%= @user.created_at.strftime("%B %Y") %></strong></h5>
+    <h1>Hello, my name is <%= @user.first_name %></h1>
+      <h5><strong><%= @user.first_name %> <%= @user.last_name %></strong> · Member since <strong><%= @user.created_at.strftime("%B %Y") %></strong></h5>
   </div>
 </div>
 <br>

@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     @cellars = @user.cellars.all
   end
 
-  def show
-    @user = User.find(params[:id])
-    @cellars = @user.cellars.all
-  end
+  # def show
+  #   @user = User.find(params[:id])
+  #   @cellars = @user.cellars.all
+  # end
 
 end

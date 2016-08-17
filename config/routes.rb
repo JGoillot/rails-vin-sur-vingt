@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'users#dashboard', as: "user_dashboard"
 
-  resources :users, only: [:show]
 
   get 'conversations/index'
 
