@@ -5,7 +5,7 @@
 </div>
 
 
-<h2><%= @cellar.user.firstname %> 's Cellar </h2>
+<h2><%= @cellar.user.first_name %> 's Cellar </h2>
 <h5><%= @cellar.description %></h5>
 
 <p><%= @cellar.address %></p>
@@ -13,7 +13,7 @@
 
 <div class="user-infos">
   <%= link_to user_path(@cellar.user) do %>
-  <%= @cellar.user.firstname %> <%= @cellar.user.lastname %>
+  <%= @cellar.user.first_name %> <%= @cellar.user.last_name %>
   <% end %>
 </div>
 
