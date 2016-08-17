@@ -3,6 +3,8 @@ class Cellar < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :messages, dependent: :destroy
 
+  has_attachments :photos, maximum: 3
+
   validates :description, presence: true
   validates :address, presence: true
   validates :price_per_month, presence: true
