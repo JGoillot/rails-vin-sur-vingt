@@ -1,1 +1,9 @@
 <p>blablabla</p>
+
+<%= simple_form_for [@cellar, @message]  do |f| %>
+
+  <%= f.input :content %>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
