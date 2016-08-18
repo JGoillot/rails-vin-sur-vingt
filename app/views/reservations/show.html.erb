@@ -1,0 +1,15 @@
+<h1>Book a reservation for <%= @cellar.user.first_name %> Cellar</h1>
+
+<h3>STEP 2/2</h3>
+
+<p>Select the bottles you want to add to truc bidule</p>
+
+
+<%= simple_form_for [@reservation, @reservation_bottles] do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.association :bottle_lot %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
