@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get 'profile/:id' => 'users#show', as: "user_profile"
 
-  resources :conversations, only: [:index, :show]
+  resources :conversations, only: [:index, :show] do
+    resources :messages, only: [:create]
+  end
 
 
   devise_for :users,
