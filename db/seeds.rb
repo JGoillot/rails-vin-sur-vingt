@@ -34,7 +34,7 @@ kind = %w( fridge rock underground )
     puts '- Seed Create Cellar'
     user.cellars.create(
       description: Faker::ChuckNorris.fact,
-      address: Faker::Address.city,
+      address: Faker::Address.state,
       space_available: Faker::Number.number(2),
       price_per_month: Faker::Number.decimal(2),
       kind: kind.sample,
