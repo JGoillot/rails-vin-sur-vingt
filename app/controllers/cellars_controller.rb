@@ -11,6 +11,12 @@ class CellarsController < ApplicationController
 
   def show
     @cellar = Cellar.find(params[:id])
+    @cellar_coordinates = { lat: @cellar.latitude, lng: @cellar.longitude }
+
+    @hash = Gmaps4rails.build_markers(@cellar) do |cellar, marker|
+      marker.lat cellar.latitude
+      marker.lng cellar.longitude
+    end
     @message = Message.new
   end
 

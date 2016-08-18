@@ -3,21 +3,17 @@
 <p>display a cellar </p>
 
 <% if @cellar.photos.empty? %>
-  <%= image_tag "wine_cellar.jpg", width: 1000, height: 450, crop: :fill %>
+  <%= image_tag "wine_cellar.jpg", width: 800, height: 450, crop: :fill %>
 <% else %>
   <% @cellar.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, width: 1000, height: 450, crop: :fill %>
+    <%= cl_image_tag photo.path, width: 800, height: 450, crop: :fill %>
   <% end %>
 <% end %>
-
-
-
 
 <h2><%= @cellar.user.first_name %> 's Cellar </h2>
 <h5><%= @cellar.description %></h5>
 
 <p><%= @cellar.address %></p>
-
 
 <div class="user-infos">
   <%= link_to user_profile_path(@cellar.user) do %>
@@ -50,6 +46,23 @@
 <strong><%= @cellar.open_hour %></strong>
 </p>
 
+<div id="map" style="width: 100%; height: 400px; margin-bottom: 50px">
+  <% content_for(:after_js) do %>
+    <script>
+      $(document).on('ready', function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          handler.getMap().setZoom(10);
+        });
+      });
+    </script>
+  <% end %>
+</div>
+
  <!-- Button trigger modal -->
   <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Send a message</a>
 
@@ -74,12 +87,4 @@
   </div><!-- /.modal -->
 
 <%= link_to "Book the cave!", new_cellar_reservation_path(@cellar) %>
-
-
-
-
-
-
-
-
 
