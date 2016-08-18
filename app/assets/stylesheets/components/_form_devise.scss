@@ -1,0 +1,36 @@
+.facebook-connect {
+  border-color: #3B5998;
+  border-bottom-color: #263a63;
+  background-color: #3B5998;
+  color: #fff;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 27px;
+  padding-right: 53px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    border-top: 1px solid #dce0e0;
+}
+
+.existing-account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.log-in {
+  padding: 6px 12px;
+  border: 1px solid #ff5a5f;
+  color: #ff5a5f;
+}
