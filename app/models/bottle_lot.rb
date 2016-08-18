@@ -6,4 +6,8 @@ class BottleLot < ApplicationRecord
   validates :year, presence: true
   validates :appelation, presence: true
   validates :quantity, presence: true
+
+  def to_s
+      "#{quantity} - #{appelation}"
+  end
 end
