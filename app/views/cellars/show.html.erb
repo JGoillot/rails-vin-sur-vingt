@@ -62,7 +62,6 @@
         <div class="modal-body">
           <%= simple_form_for @message, url: cellar_messages_path(@cellar)  do |f| %>
           <%= f.input :content %>
-
         </div>
         <div class="modal-footer">
           <%= f.button :submit, class: "btn btn-primary" %>
@@ -75,7 +74,7 @@
 
 
 
-<%= link_to "Send a message", new_cellar_message_path(@cellar) %>
+
 
 
 
