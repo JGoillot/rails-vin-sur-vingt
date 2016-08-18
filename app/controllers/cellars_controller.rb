@@ -11,6 +11,7 @@ class CellarsController < ApplicationController
 
   def show
     @cellar = Cellar.find(params[:id])
+    @message = Message.new
   end
 
   def create
