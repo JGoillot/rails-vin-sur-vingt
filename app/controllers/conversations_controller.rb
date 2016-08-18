@@ -1,9 +1,12 @@
 class ConversationsController < ApplicationController
   def index
-    @conversations = current_user.messages.select("DISTINCT ON(cellar_id) *").order("cellar_id, created_at DESC")
+    @conversations = Conversation.all
   end
 
   def show
-    @messages = current_user.messages.where(cellar_id: params[:id])
+    @conversation = Conversation.find(params[:id])
+    @message = Message.new
+
+    @messages = @conversation.messages
   end
 end

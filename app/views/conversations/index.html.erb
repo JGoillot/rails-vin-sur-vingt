@@ -4,9 +4,9 @@
 
 <% @conversations.each do |conversation| %>
   <p>
-    <%= link_to conversation_path(conversation.cellar) do %>
-      <%= conversation.cellar.inspect %>
-      <%= conversation.content %>
+    <%= link_to conversation_path(conversation) do %>
+      <%= conversation.cellar.user.first_name %> <%= conversation.cellar.user.last_name %><br>
+      <%= conversation.messages.last.content %>
     <% end %>
   </p>
 <% end %>
