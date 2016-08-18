@@ -7,7 +7,9 @@ class BottleLot < ApplicationRecord
   validates :appelation, presence: true
   validates :quantity, presence: true
 
+
   def display_bottle_lot
     "#{dimension} - #{quantity}"
   end
+
 end

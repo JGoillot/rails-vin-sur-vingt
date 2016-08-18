@@ -1,0 +1,15 @@
+<p>Page index</p>
+
+
+
+<% @conversations.each do |conversation| %>
+  <p>
+    <%= link_to conversation_path(conversation.cellar) do %>
+      <%= conversation.cellar.inspect %>
+      <%= conversation.content %>
+    <% end %>
+  </p>
+<% end %>
+
+
+

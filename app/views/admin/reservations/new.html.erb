@@ -1,0 +1,8 @@
+ <h1>Book a reservation for <%= @cellar.user.first_name %> Cellar</h1>
+<%= simple_form_for :reservations do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :check_in, as: :date %>
+  <%= f.input :check_out, as: :date %>
+  <%= f.select :quantity, @user.bottle_lots %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
