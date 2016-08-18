@@ -48,8 +48,32 @@
 <strong><%= @cellar.open_hour %></strong>
 </p>
 
+ <!-- Button trigger modal -->
+  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Send a message</a>
 
-<%= link_to "Book the cave!", new_cellar_reservation_path(@cellar) %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Send a message to <%= @cellar.user.first_name %></h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @message, url: cellar_messages_path(@cellar)  do |f| %>
+          <%= f.input :content %>
+
+        </div>
+        <div class="modal-footer">
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
 
 <%= link_to "Send a message", new_cellar_message_path(@cellar) %>
 
