@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
    @message.cellar = @cellar
    @message.user = current_user
     if @message.save
-      redirect_to user_dashboard_path
+      redirect_to conversations_path
     else
       render :new
     end
@@ -14,11 +14,6 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-  end
-
-  def index
-    user = current_user
-    @message = Message.where(user_id: user.id)
   end
 
   private

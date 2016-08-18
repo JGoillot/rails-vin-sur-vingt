@@ -17,6 +17,7 @@ class CellarsController < ApplicationController
       marker.lat cellar.latitude
       marker.lng cellar.longitude
     end
+    @message = Message.new
   end
 
   def create

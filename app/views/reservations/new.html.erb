@@ -1,11 +1,18 @@
-<%= simple_form_for :reservations do |f| %>
+  <h1>Book a reservation for <%= @cellar.user.first_name %> Cellar</h1>
+
+  <h3>STEP 1/2</h3>
+
+  <p>Select reservation dates</p>
+
+  <p></p>
+
+
+<%= simple_form_for :reservation, url: cellar_reservations_path(@cellar) do |f| %>
 
   <%= f.error_notification %>
 
-  <%= f.input :check_in %>
-  <%= f.input :check_out %>
-  <%= f.select :quantity, @user.bottle_lots %>
-  byebug
+  <%= f.input :check_in, as: :date, order: [:month, :year] %>
+  <%= f.input :check_out, as: :date, order: [:month, :year] %>
   <%= f.button :submit, class: "btn btn-primary" %>
 
 <% end %>

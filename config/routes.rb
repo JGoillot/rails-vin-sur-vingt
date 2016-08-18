@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'profile/:id' => 'users#show', as: "user_profile"
 
-  # get 'conversations/index'
+  resources :conversations, only: [:index, :show]
 
 
   devise_for :users,
@@ -14,13 +14,12 @@ Rails.application.routes.draw do
   resources :cellars, only: [:index, :show, :create, :update, :destroy] do
     resources :reservations, only: [:create, :new, :destroy]
     resources :messages, only: [:create, :new, :index]
-    resources :conversations, only: [:index, :show]
+
   end
   namespace :admin do
     resources :bottle_lots, only: [:new, :index, :create, :show]
     resources :cellars, only: [:new, :index, :edit]
     resources :reservations, only: [:index]
-    resources :conversations, only: [:index, :show]
   end
 
   mount Attachinary::Engine => "/attachinary"

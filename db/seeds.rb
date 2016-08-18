@@ -13,6 +13,7 @@ require 'faker'
 
 puts '- Seed Delete all User'
 
+BottleLot.destroy_all
 User.destroy_all
 
 
