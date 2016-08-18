@@ -56,13 +56,22 @@ ActiveRecord::Schema.define(version: 20160817143703) do
     t.index ["user_id"], name: "index_cellars_on_user_id", using: :btree
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text     "content"
+  create_table "conversations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "cellar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cellar_id"], name: "index_messages_on_cellar_id", using: :btree
+    t.index ["cellar_id"], name: "index_conversations_on_cellar_id", using: :btree
+    t.index ["user_id"], name: "index_conversations_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -113,7 +122,9 @@ ActiveRecord::Schema.define(version: 20160817143703) do
 
   add_foreign_key "bottle_lots", "users"
   add_foreign_key "cellars", "users"
-  add_foreign_key "messages", "cellars"
+  add_foreign_key "conversations", "cellars"
+  add_foreign_key "conversations", "users"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "reservation_bottles", "bottle_lots"
   add_foreign_key "reservation_bottles", "reservations"

@@ -2,11 +2,15 @@ class MessagesController < ApplicationController
 
   before_action :find_cellar, only: [ :new, :create ]
   def create
-   @message = Message.new(message_params)
-   @message.cellar = @cellar
-   @message.user = current_user
+
+    @conversation = Conversation.where(user: current_user, cellar: @cellar).take
+    @conversation = Conversation.create(user: current_user, cellar: @cellar) unless @conversation
+
+    @message = Message.new(message_params)
+    @message.user = current_user
+    @message.conversation = @conversation
     if @message.save
-      redirect_to conversations_path
+      redirect_to conversation_path(@conversation)
     else
       render :new
     end

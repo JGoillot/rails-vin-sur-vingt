@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :reservations
   has_many :bottle_lots
+  has_many :conversations, dependent: :destroy
   has_many :cellars, dependent: :destroy
 
   validates :first_name, presence: true

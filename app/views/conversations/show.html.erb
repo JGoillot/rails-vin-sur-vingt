@@ -1,6 +1,9 @@
 <p>Page show</p>
+<%= link_to "View all my messages", conversations_path %>
+
 
 
 <%  @messages.each do |message| %>
-  <%= message.content %>
+  <br><%= message.content %>
 <% end %>
+

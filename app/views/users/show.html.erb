@@ -14,7 +14,7 @@
 <p>
 <% @cellars.each do |cellar| %>
 <%= link_to cellar_path(cellar) do %>
-<h5><%= @user.firstname %>'s Cellar (<%= cellar.space_available %>)</h5>
+<h5><%= @user.first_name %>'s Cellar (<%= cellar.space_available %>)</h5>
 <h6><%= cellar.description %></6>
 <h6>
   <i class="fa fa-map-marker" aria-hidden="true"></i>
