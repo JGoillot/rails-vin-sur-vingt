@@ -20,10 +20,12 @@
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+        <%= link_to cellar_messages_path(current_user.messages.count) do %>
         <div class="badge-container">
           <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue"><%= current_user.messages.count %></div>
+          <div  class="badge badge-blue"><%= current_user.messages.count %></div>
         </div>
+        <% end %>
       <% end %>
 
       <!-- Profile picture and dropdown -->
