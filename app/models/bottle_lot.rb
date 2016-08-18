@@ -8,7 +8,7 @@ class BottleLot < ApplicationRecord
   validates :quantity, presence: true
 
 
-  def display_bottle_lot
+  def to_s
     "#{dimension} - #{quantity}"
   end
 

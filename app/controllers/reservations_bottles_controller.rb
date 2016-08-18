@@ -1,2 +1,0 @@
-class ReservationsBottlesController < ApplicationController
-end

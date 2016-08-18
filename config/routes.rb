@@ -12,14 +12,18 @@ Rails.application.routes.draw do
     root to: 'pages#home'
 
   resources :cellars, only: [:index, :show, :create, :update, :destroy] do
-    resources :reservations, only: [:create, :new, :destroy]
+    resources :reservations, only: [:create, :new, :show, :destroy]
     resources :messages, only: [:create, :new, :index]
-
   end
+
+  resources :reservations, only: [] do
+    resources :reservation_bottles, only: [:create]
+  end
+
   namespace :admin do
     resources :bottle_lots, only: [:new, :index, :create, :show]
     resources :cellars, only: [:new, :index, :edit]
-    resources :reservations, only: [:index]
+    resources :reservations, only: [:index, :show]
   end
 
   mount Attachinary::Engine => "/attachinary"
