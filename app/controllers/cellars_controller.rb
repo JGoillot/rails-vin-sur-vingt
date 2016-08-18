@@ -11,6 +11,7 @@ class CellarsController < ApplicationController
 
   def show
     @cellar = Cellar.find(params[:id])
+    @cellar_coordinates = { lat: @cellar.latitude, lng: @cellar.longitude }
   end
 
   def create
