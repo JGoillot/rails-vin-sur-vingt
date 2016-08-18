@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818091659) do
+ActiveRecord::Schema.define(version: 20160818133038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,9 @@ ActiveRecord::Schema.define(version: 20160818091659) do
     t.integer  "cellar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.index ["cellar_id"], name: "index_reservations_on_cellar_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,14 +112,12 @@ ActiveRecord::Schema.define(version: 20160818091659) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "first_name"
+    t.string   "last_name"
     t.date     "birthdate"
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -133,4 +133,5 @@ ActiveRecord::Schema.define(version: 20160818091659) do
   add_foreign_key "reservation_bottles", "bottle_lots"
   add_foreign_key "reservation_bottles", "reservations"
   add_foreign_key "reservations", "cellars"
+  add_foreign_key "reservations", "users"
 end

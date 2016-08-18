@@ -7,7 +7,7 @@
   <p></p>
 
 
-<%= simple_form_for :reservation, url: cellar_reservations_path(@cellar) do |f| %>
+<%= simple_form_for [@cellar, @reservation] do |f| %>
 
   <%= f.error_notification %>
 
