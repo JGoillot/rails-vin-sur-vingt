@@ -1,5 +1,9 @@
-Page show
-<%= link_to "View all my messages", conversations_path %>
+<div class="subnav">
+  <%= link_to "Dashboard", user_dashboard_path, class: "subtitle" %>
+  <%= link_to "Inbox", conversations_path, class: "subtitle dash" %>
+  <%= link_to "Message", conversations_path, class: "subtitle active message" %>
+</div>
+
 
 <blockquote class="chat">
 <% @messages.each do |message| %>
