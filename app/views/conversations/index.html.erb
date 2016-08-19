@@ -3,17 +3,28 @@
   <%= link_to "Inbox", conversations_path, class: "subtitle active" %>
 </div>
 
-<p>Page index</p>
 
 
 <% @conversations.each do |conversation| %>
-  <p>
-    <%= link_to conversation_path(conversation) do %>
-      <%= conversation.cellar.user.first_name %> <%= conversation.cellar.user.last_name %><br>
-      <%= conversation.messages.last.content %>
-    <% end %>
-  </p>
+<%= link_to conversation_path(conversation) do %>
+<div class="product">
+  <div class='product-upvote'>
+    <div class='product-count'><i class="fa fa-envelope" aria-hidden="true"></i></div>
+  </div>
+  <%= image_tag "wine_cellar.jpg", class: "product-image hidden-xs" %>
+  <div class='product-body'>
+    <h3><%= conversation.cellar.user.first_name %> <%= conversation.cellar.user.last_name %></h3>
+    <p><%= conversation.messages.last.content %></p>
+  </div>
+  <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <li><%= conversation.messages.last.created_at.strftime("%w %A %B") %></li>
+  </ul>
+</div>
 <% end %>
+<% end %>
+
+
+
 
 
 
