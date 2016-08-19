@@ -1,3 +1,8 @@
 <p>Delete your reservation</p>
 
-<%= @reservation_bottle %>
+<p>Are you sure you want to delete reservation <%= @reservation_bottle.reservation.id %>?</p>
+
+<p>You stock in this cave: <%= @bottle_lot.quantity%>, <%= @bottle_lot.dimension%>
+</p>
+
+<%= link_to "Cancel my reservation", reservation_reservation_bottle_path(@reservation, @reservation_bottle), method: :delete %>
