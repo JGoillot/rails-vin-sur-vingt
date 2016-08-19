@@ -1,14 +1,23 @@
-<% @cellars.each do |c| %>
-<%= link_to cellar_path(c.id) do %>
-  <div>
-      <p>
-        <%= c.user[:firstname] %>
-        <%= c.user[:lastname] %>
-      </p>
-      <p>
-        <%= c.address %>
-      </p>
-      <hr>
+
+
+<div class="container">
+  <div class="row">
+    <% @cellars.each do |c| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "wine_cellar.jpg" %>');">
+        <div class="card-category"><%= c.kind %></div>
+          <div class="card-description">
+            <h2><%= c.user.first_name %>'s Cellar</h2>
+            <p><%= c.address %> </p>
+          </div>
+        <div class="card-user">
+          <%= c.price_per_month %> €
+        </div>
+        <%= link_to "", cellar_path(c), class: "card-link" %>
+      </div>
+    </div>
+  <% end %>
   </div>
-<% end %>
-<% end %>
+</div>
+
+
