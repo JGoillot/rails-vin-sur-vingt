@@ -70,10 +70,10 @@ ActiveRecord::Schema.define(version: 20160818133038) do
   create_table "messages", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "conversation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.integer  "cellar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cellar_id"], name: "index_messages_on_cellar_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -112,12 +112,14 @@ ActiveRecord::Schema.define(version: 20160818133038) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "firstname"
+    t.string   "lastname"
     t.date     "birthdate"
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -128,7 +130,7 @@ ActiveRecord::Schema.define(version: 20160818133038) do
   add_foreign_key "cellars", "users"
   add_foreign_key "conversations", "cellars"
   add_foreign_key "conversations", "users"
-  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "cellars"
   add_foreign_key "messages", "users"
   add_foreign_key "reservation_bottles", "bottle_lots"
   add_foreign_key "reservation_bottles", "reservations"
