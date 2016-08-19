@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :reservations, only: [] do
-    resources :reservation_bottles, only: [:create]
+    resources :reservation_bottles, only: [:create, :show]
   end
 
   namespace :admin do
