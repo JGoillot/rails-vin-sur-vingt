@@ -7,7 +7,7 @@
       <%= f.input :address %>
       <%= f.input :space_available %>
       <%= f.input :price_per_month %>
-      <%= f.input :kind %>
+      <%= f.input :kind, collection: [ "Wine Refrigerator", "Wine Cellar"] %>
       <%= f.input :temperature %>
       <%= f.input :open_hour %>
       <%= f.input :photos, as: :attachinary %>
