@@ -11,6 +11,7 @@
 
 
 
+
 <div class="container">
   <div class="row">
       <div class="bottles">
@@ -53,7 +54,14 @@
           <% @user.bottle_lots.each do |bottle_lot| %>
             <% bottle_lot.reservation_bottles.each do |reservation_bottle| %>
              <p>Reservation numéro : <%= reservation_bottle.reservation.id %></p>
-             <p>Date de début de réservation : <%= reservation_bottle.reservation.check_in %> date de fin de réservation :  <%= reservation_bottle.reservation.check_out %></p> <%= link_to  reservation_reservation_bottle_path(reservation_bottle.reservation.id, reservation_bottle.id) do %><i class="fa fa-trash-o" aria-hidden="true"></i>  <% end %> <hr>
+             <p>Date de début de réservation : <%= reservation_bottle.reservation.check_in %> date de fin de réservation :  <%= reservation_bottle.reservation.check_out %></p> <%= link_to  reservation_reservation_bottle_path(reservation_bottle.reservation.id, reservation_bottle.id) do %><i class="fa fa-trash-o" aria-hidden="true"></i>  <% end %>
+
+                <%= simple_form_for [reservation_bottle.reservation.cellar, reservation_bottle.reservation] do |form| %>
+                  <%= form.input :review %>
+                  <%= form.button :submit %>
+                <% end %>
+
+             <hr>
             <% end %>
           <% end %>
           </div>

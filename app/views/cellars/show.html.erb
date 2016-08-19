@@ -109,3 +109,12 @@
   <% end %>
 </div>
 
+<div id="reviews">
+  <% if @cellar.any_reviews? %>
+    <% @cellar.reservations.each do |reservation| %>
+      <%= reservation.review %>
+    <% end %>
+  <% else %>
+    Be the first to leave a review for <%= @cellar.user.first_name %>
+  <% end %>
+</div>
