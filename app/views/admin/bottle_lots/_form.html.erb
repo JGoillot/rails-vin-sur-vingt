@@ -1,9 +1,18 @@
-<%= simple_form_for @bottle_lot, url: admin_bottle_lots_path do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :dimension %>
-  <%= f.input :year %>
-  <%= f.input :color %>
-  <%= f.input :appelation %>
-  <%= f.input :quantity %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= simple_form_for @bottle_lot, url: admin_bottle_lots_path do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :dimension, collection: [ "Bottle (75cl)", "Magnum (1,5l)", "Jeroboam (3l)", "Imperial (6l)"] %>
+        <%= f.input :year %>
+        <%= f.input :color, collection: [ "Red", "White", "Rosé"] %>
+        <%= f.input :appelation %>
+        <%= f.input :quantity %>
+        <div class="text-center">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
