@@ -26,7 +26,6 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @reservation.update(review_params)
-    raise
     @reservation.save
     redirect_to user_dashboard_path(current_user)
   end

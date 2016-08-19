@@ -5,60 +5,65 @@
   <%= link_to "Inbox", conversations_path, class: "subtitle dash" %>
 </div>
 
-<h1>MY PROFILE</h1>
-<div class="user-infos">
-  <%= link_to user_profile_path(@user) do %>
-  <%= @user.first_name %> <%= @user.last_name %>
-  <% end %>
-</div>
 
-<h1>MY BOTTLES <%= link_to "Add a new Bottle Lot", new_admin_bottle_lot_path, class: "btn btn-primary" %></h1>
+
+
+
+
 
 
 <div class="container">
   <div class="row">
-  <% @user.bottle_lots.each do |bottle| %>
-    <div class="col-xs-12 col-sm-4">
-      <strong><%= bottle.quantity %></strong> <%= bottle.dimension %><br>
-      <h4><%= bottle.appelation %></h4>
-      <h5><%= bottle.year %></h5>
-      <h5><%= bottle.color %></h5>
+      <div class="bottles">
+      <h3>My Bottles  <%= link_to new_admin_bottle_lot_path do %><i class="fa fa-plus" aria-hidden="true"></i><% end %></h3>
+      <% @user.bottle_lots.each do |bottle| %>
+        <div class="col-xs-12 col-sm-4">
+          <strong><%= bottle.quantity %></strong> <%= bottle.dimension %><br>
+          <h4><%= bottle.appelation %></h4>
+          <h5><%= bottle.year %></h5>
+          <h5><%= bottle.color %></h5>
+        </div>
+      <% end %>
+      </div>
     </div>
-    <% end %>
-  </div>
+
+    <div class="row">
+      <div class="cellar">
+       <h3>My Cellars  <%= link_to new_admin_cellar_path do %><i class="fa fa-plus" aria-hidden="true"></i><% end %></h3>
+            <% @cellars.each do |c| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "wine_cellar.jpg" %>');">
+                <div class="card-category"><%= c.kind %></div>
+                  <div class="card-description">
+                    <h2><%= @user.first_name %>'s Cellar </h2>
+                    <p><%= c.address %> </p>
+                  </div>
+                <div class="card-user">
+                  <%= c.price_per_month %> €
+                <%= link_to "", cellar_path(c), class: "card-link" %>
+              </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="reservation">
+          <h3>My Reservations  </h3>
+          <% @user.bottle_lots.each do |bottle_lot| %>
+            <% bottle_lot.reservation_bottles.each do |reservation_bottle| %>
+             <p>Reservation numéro : <%= reservation_bottle.reservation.id %></p>
+             <p>Date de début de réservation : <%= reservation_bottle.reservation.check_in %> date de fin de réservation :  <%= reservation_bottle.reservation.check_out %></p> <%= link_to  reservation_reservation_bottle_path(reservation_bottle.reservation.id, reservation_bottle.id) do %><i class="fa fa-trash-o" aria-hidden="true"></i>  <% end %>
+
+                <%= simple_form_for [reservation_bottle.reservation.cellar, reservation_bottle.reservation] do |form| %>
+                  <%= form.input :review %>
+                  <%= form.button :submit %>
+                <% end %>
+
+             <hr>
+            <% end %>
+          <% end %>
+          </div>
+      </div>
 </div>
-
-
-<h1>MY CELLAR <%= link_to "Add a new Cellar", new_admin_cellar_path, class: "btn btn-primary" %></h1>
-<p>
-<% @cellars.each do |cellar| %>
-<%= link_to cellar_path(cellar) do %>
-<h2><%= @user.first_name %>'s Cellar </h2>
-<h5><%= cellar.description %></5>
-<h5><%= cellar.address %></5>
-<h3><%= cellar.space_available %>
-<% end %>
-<% end %>
-</p>
-
-<h1>MY RESERVATIONS</h1>
-
-<% @user.bottle_lots.each do |bottle_lot| %>
-  <% bottle_lot.reservation_bottles.each do |reservation_bottle| %>
-    <p>Reservation numéro : <%= reservation_bottle.reservation.id %></p>
-    <p>Date de début de réservation : <%= reservation_bottle.reservation.check_in %> date de fin de réservation :  <%= reservation_bottle.reservation.check_out %></p>
-
-    <%= link_to "Cancel reservation", reservation_reservation_bottle_path(reservation_bottle.reservation.id, reservation_bottle.id), class: "btn btn-primary" %>
-
-    <%= simple_form_for [reservation_bottle.reservation.cellar, reservation_bottle.reservation] do |form| %>
-      <%= form.input :review %>
-      <%= form.button :submit %>
-    <% end %>
-
-
-    <hr>
-  <% end %>
-<% end %>
-
-
-
