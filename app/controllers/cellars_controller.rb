@@ -7,6 +7,13 @@ class CellarsController < ApplicationController
     else
       @cellars = Cellar.where(search_params)
     end
+
+    # @cellars = Cellar.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@cellars) do |cellar, marker|
+      marker.lat cellar.latitude
+      marker.lng cellar.longitude
+    end
+
   end
 
   def show
