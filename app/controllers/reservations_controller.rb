@@ -18,10 +18,17 @@ class ReservationsController < ApplicationController
     @reservation_bottles = ReservationBottle.new
     @cellar = Cellar.find(params[:cellar_id])
     @bottles_lot = current_user.bottle_lots
-    # @cellar
   end
 
   def destroy
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(review_params)
+    raise
+    @reservation.save
+    redirect_to user_dashboard_path(current_user)
   end
 
   private
@@ -32,6 +39,10 @@ class ReservationsController < ApplicationController
 
   def find_reservation
     @reservation = Reservation.find(params[:id])
+  end
+
+   def review_params
+    params.require(:reservation).permit(:review)
   end
 
 end

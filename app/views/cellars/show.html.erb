@@ -89,3 +89,12 @@
 
 <%= link_to "Book the cave!", new_cellar_reservation_path(@cellar) %>
 
+<div id="reviews">
+  <% if @cellar.any_reviews? %>
+    <% @cellar.reservations.each do |reservation| %>
+      <%= reservation.review %>
+    <% end %>
+  <% else %>
+    Be the first to leave a review for <%= @cellar.user.first_name %>
+  <% end %>
+</div>

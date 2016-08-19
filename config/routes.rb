@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
 
   resources :cellars, only: [:index, :show, :create, :update, :destroy] do
-    resources :reservations, only: [:create, :new, :show, :destroy]
+    resources :reservations, only: [:create, :new, :show, :destroy, :update]
     resources :messages, only: [:create, :new, :index]
   end
 
