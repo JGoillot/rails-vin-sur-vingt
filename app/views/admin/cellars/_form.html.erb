@@ -1,16 +1,21 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for @cellar do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :description %>
+      <%= f.input :address %>
+      <%= f.input :space_available %>
+      <%= f.input :price_per_month %>
+      <%= f.input :kind %>
+      <%= f.input :temperature %>
+      <%= f.input :open_hour %>
+      <%= f.input :photos, as: :attachinary %>
+      <div class="text-center">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+</div>
+</div>
 
-  <%= simple_form_for @cellar do |f| %>
-    <%= f.error_notification %>
-
-    <%= f.input :description %>
-    <%= f.input :address %>
-    <%= f.input :space_available %>
-    <%= f.input :price_per_month %>
-    <%= f.input :kind %>
-    <%= f.input :temperature %>
-    <%= f.input :open_hour %>
-    <%= f.input :photos, as: :attachinary %>
-
-    <%= f.button :submit, class: "btn btn-primary" %>
-
-    <% end %>
