@@ -1,5 +1,9 @@
-<p>Page index</p>
+<div class="subnav">
+  <%= link_to "Dashboard", user_dashboard_path, class: "subtitle" %>
+  <%= link_to "Inbox", conversations_path, class: "subtitle active" %>
+</div>
 
+<p>Page index</p>
 
 
 <% @conversations.each do |conversation| %>

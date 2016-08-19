@@ -1,6 +1,9 @@
 
 <% content_for :title, "#{current_user.first_name} | WineSitter Dashboard" %>
-
+<div class="subnav">
+  <%= link_to "Dashboard", user_dashboard_path, class: "subtitle dash-active" %>
+  <%= link_to "Inbox", conversations_path, class: "subtitle dash" %>
+</div>
 
 <h1>MY PROFILE</h1>
 <div class="user-infos">

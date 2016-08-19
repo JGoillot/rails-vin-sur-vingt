@@ -1,0 +1,35 @@
+.subnav {
+  background-color: #484848;
+  display: flex;
+  align-items: center;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 1.43;
+  height: 32px;
+  color: #bbb;
+  padding-left: 100px;
+  padding-top: 5px;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.active {
+  color: #fff;
+  margin-left: -70px;
+  }
+
+.dash-active {
+  color: #fff;
+}
+
+.dash {
+  margin-left: -70px;
+}
+
+.message {
+color: #fff;
+}
