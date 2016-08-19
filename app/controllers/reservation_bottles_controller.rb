@@ -11,6 +11,9 @@ class ReservationBottlesController < ApplicationController
     redirect_to user_dashboard_path
   end
 
+  def show
+  end
+
   private
 
   def reservation_bottles_params
