@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
     @reservation_bottles = ReservationBottle.new
     @cellar = Cellar.find(params[:cellar_id])
     @bottles_lot = current_user.bottle_lots
+    # @cellar
   end
 
   def destroy
